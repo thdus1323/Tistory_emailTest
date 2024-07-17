@@ -1,8 +1,8 @@
 package com.example.emailtest;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 
+
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -23,8 +23,8 @@ public class EmailUtil {
             helper.setTo(toAddress);
             helper.setSubject(subject);
             helper.setText(body);
-        } catch (MessagingException e) {
-            e.printStackTrace();
+        } catch (jakarta.mail.MessagingException e) {
+            throw new RuntimeException(e);
         }
 
         sender.send(message);
